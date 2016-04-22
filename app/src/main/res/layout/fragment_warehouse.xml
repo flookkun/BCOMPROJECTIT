@@ -1,0 +1,29 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragment.warehouseFragment"
+    android:paddingTop="45dp">
+
+    <!-- TODO: Update blank fragment layout -->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:singleLine="true"
+            android:textColorHint="#000"
+            android:padding="10dp"
+            android:hint="เลือกสาขา.."
+            android:textSize="20sp"
+            android:id="@+id/inputsearch"
+
+             />
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+</LinearLayout>

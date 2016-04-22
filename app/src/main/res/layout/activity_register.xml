@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#282828"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.app.supawit.bcomprojectit.Login">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="BEAUTY PROJECT"
+            android:textColor="#00aa55"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#5d5d5d"
+            android:orientation="horizontal"
+
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:text="USERNAME"
+                android:textColor="#ffffff"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/txtuser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="30dp"
+                android:singleLine="true"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#5d5d5d"
+            android:orientation="horizontal"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:textStyle="bold">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:text="PASSWORD"
+                android:textColor="#ffffff"
+                android:textSize="15dp"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:singleLine="true"
+                android:id="@+id/txtpass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="30dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#5d5d5d"
+            android:orientation="horizontal"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:textStyle="bold">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:text="FULLNAME"
+                android:textColor="#ffffff"
+                android:textSize="15dp"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:singleLine="true"
+                android:id="@+id/txtfullname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="35dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#5d5d5d"
+            android:orientation="horizontal"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:textStyle="bold">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:text="TEL"
+                android:textColor="#ffffff"
+                android:textSize="15dp"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:singleLine="true"
+                android:id="@+id/txttel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="10"
+                android:layout_marginLeft="85dp"
+                android:inputType="numberDecimal"
+                android:textColor="#ffffff"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#5d5d5d"
+            android:orientation="horizontal"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:textStyle="bold">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:text="E-MAIL"
+                android:textColor="#ffffff"
+                android:textSize="15dp"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:singleLine="true"
+                android:id="@+id/txtemail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:textColor="#ffffff"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#5d5d5d"
+            android:orientation="horizontal"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:textStyle="bold">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:text="รหัสพนักงาน"
+                android:textColor="#ffffff"
+                android:textSize="15dp"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:singleLine="true"
+                android:id="@+id/txtstcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:textColor="#ffffff"
+                android:maxLength="4"
+                android:layout_marginLeft="25dp"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#5d5d5d"
+            android:orientation="horizontal"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:textStyle="bold"
+            android:weightSum="2">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:text="กลับหน้าหลัก"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:id="@+id/btn2s"/>
+
+            <Button
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:text="บันทึก"
+                android:textSize="20dp"
+                android:id="@+id/btns"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

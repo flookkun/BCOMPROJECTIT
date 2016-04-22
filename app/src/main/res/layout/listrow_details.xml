@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativelist"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/dim_foreground_disabled_material_dark">
+
+    <com.app.supawit.bcomprojectit.View.CustomViewGroup
+        android:id="@+id/viewgroup1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+    </com.app.supawit.bcomprojectit.View.CustomViewGroup>
+
+</RelativeLayout>

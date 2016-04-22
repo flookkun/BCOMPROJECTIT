@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context="com.app.supawit.bcomprojectit.Login">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:padding="10dp"
+        android:id="@+id/linearLayout">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/logobb" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:singleLine="true"
+            android:textColorHint="#000"
+            android:padding="10dp"
+            android:hint="USER"
+            android:textSize="20sp"
+            android:id="@+id/edtuserid" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:singleLine="true"
+            android:hint="PASSWORD"
+            android:textColor="#000"
+            android:textColorHint="#000"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:inputType="textPassword"
+            android:layout_marginTop="5dp"
+            android:id="@+id/edtpass" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            style="@android:style/Widget.Holo.Light.ProgressBar.Large"
+            android:id="@+id/pbbar"
+            />
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="80dp"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card1qa"
+            card_view:cardElevation="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            card_view:cardMaxElevation="8dp"
+            android:layout_gravity="center"
+
+            >
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:padding="10dp"
+                android:id="@+id/btnlogin"
+                android:text="ตกลง"
+                android:background="#FDB5C8"
+                android:layout_below="@+id/linearLayout"
+                android:layout_centerHorizontal="true" />
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GPS…\n10/341  นวลจันทร์\nกทม. 10230"
+        android:textColor="#000"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"/>
+
+
+
+
+</RelativeLayout>
