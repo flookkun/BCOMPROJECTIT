@@ -13,7 +13,9 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -41,13 +43,14 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
                 getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_con,fragment);
         fragmentTransaction.commit();*/
+        if(savedInstanceState == null)
+        {
+            //HOME fragment = new HOME();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fragment_con,HOME.newInstance())
+                    .commit();
 
-        HOME fragment = new HOME();
-        android.support.v4.app.FragmentTransaction fragmentTransaction =
-                getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_con,fragment).commit();
-
-
+        }
 
 
 
@@ -90,22 +93,24 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-
-        /*txtv1 = (TextView) findViewById(R.id.txtname);
+        st = getIntent().getExtras().getString("STCODE");
+        txtv1 = (TextView) findViewById(R.id.txtname);
 
         try {
             connectionSQL = new ConnectionSQL();
             Connection con = connectionSQL.CONN();
             stmt = con.createStatement();
-            String query = "select * from mas_st_pj where stcode = '"+st+"'";
+            String query = "select * from mas_st where stcode = '" + st +"'" ;
             rs = stmt.executeQuery(query);
-            if(rs.next()) {
+            if(rs.next())
+            {
                 String fn = rs.getString("FULLNAME");
                 txtv1.setText(fn);
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
-        }*/
+        }
         return true;
     }
 

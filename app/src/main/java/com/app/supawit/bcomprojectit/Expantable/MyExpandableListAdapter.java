@@ -10,8 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.app.supawit.bcomprojectit.R;
@@ -55,21 +53,12 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
-        View v = null;
-        v = inflater.inflate(R.layout.listrow_details,null);
+
+        View v = inflater.inflate(R.layout.listrow_details,null);
 
         viewgroup1 = (CustomViewGroup) v.findViewById(R.id.viewgroup1);
 
-        viewgroup1.setChkboxtext("test");
 
-        CheckBox chk = (CheckBox) viewgroup1.findViewById(R.id.chkbk);
-
-        chk.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                viewgroup1.setChkbox(isChecked);
-            }
-        });
 
 
 

@@ -6,8 +6,12 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.util.SparseArray;
-import android.widget.CheckBox;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.app.supawit.bcomprojectit.R;
 
@@ -16,8 +20,11 @@ import com.app.supawit.bcomprojectit.R;
  */
 public class CustomViewGroup extends FrameLayout {
 
-    CheckBox chkbox;
-
+    private RadioGroup rbg1;
+    private RadioButton rb1,rb2;
+    private TextView txt;
+    private EditText edt;
+    int value = 0;
     public CustomViewGroup(Context context) {
         super(context);
         initInflate();
@@ -53,20 +60,54 @@ public class CustomViewGroup extends FrameLayout {
 
     private void initInstances(){
         //findview by id here
-        chkbox = (CheckBox) findViewById(R.id.chkbk);
+        txt = (TextView) findViewById(R.id.customtxt);
+        edt = (EditText) findViewById(R.id.customedt);
+        rbg1 = (RadioGroup) findViewById(R.id.customradiogroup);
+        rb1 = (RadioButton) findViewById(R.id.customrb1);
+        rb2 = (RadioButton) findViewById(R.id.customrb2);
+
 
     }
 
+    public void settxt (String a){
+        txt.setText(a);
+    }
 
-    public void setChkbox(boolean isCheck){
 
-        chkbox.setChecked(isCheck);
+    public void setvisble (){
+
+        edt.setVisibility(View.VISIBLE);
+    }
+
+    public void setinvisble(){
+        edt.setVisibility(View.INVISIBLE);
+    }
+
+    public int setvaluerb(int h){
+
+        if(h == R.id.customrb1 )
+        {
+            value = 1;
+        }
+        else if (h == R.id.customrb2)
+        {
+            value = 0;
+        }
+
+        return value;
+    }
+
+
+ /*public void setChkbox(boolean isCheck){
+
+
 
     }
 
     public void setChkboxtext(String text){
-        chkbox.setText(text);
+
     }
+    */
 
 
     @Override

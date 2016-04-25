@@ -1,17 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/relativelist"
+    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/dim_foreground_disabled_material_dark">
+    >
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/customtxt"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        tools:text="Crime Date" />
+        android:text="1.หัวข้อ"
+        android:textColor="#000"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
+    <RadioGroup
+        android:id="@+id/customradiogroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/customrb1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ผ่าน"
+            android:layout_marginLeft="50dp"/>
+        <RadioButton
+            android:id="@+id/customrb2"
+            android:layout_marginLeft="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ไม่ผ่าน"/>
+    </RadioGroup>
+
+</LinearLayout>
+
+    <EditText
+        android:id="@+id/customedt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="Crime Date"
+        android:textColor="#000"/>
+
+    <!--
     <CheckBox
         android:id="@+id/chkbk"
         android:layout_width="wrap_content"
@@ -20,5 +62,6 @@
         android:layout_marginRight="8dp"
         android:text="Solved"
         />
+        -->
 
-</RelativeLayout>
+</LinearLayout>

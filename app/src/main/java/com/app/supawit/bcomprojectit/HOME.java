@@ -16,6 +16,13 @@ public class HOME extends Fragment implements View.OnClickListener  {
 
     Button chkbtn,hisbtn,rptbtn,mapbtn;
 
+    public static HOME newInstance() {
+        HOME fragment = new HOME();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

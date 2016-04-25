@@ -50,6 +50,7 @@ public class Login extends AppCompatActivity {
         Boolean isSuccess = false;
         String userid = etuserid.getText().toString();
         String password = edtpass.getText().toString();
+        String stcode = "";
 
         @Override
         protected void onPreExecute(){
@@ -61,6 +62,7 @@ public class Login extends AppCompatActivity {
             Toast.makeText(Login.this,r, Toast.LENGTH_SHORT).show();
             if(isSuccess) {
                 Intent i = new Intent(Login.this, Main.class);
+                i.putExtra("STCODE",stcode);
                 startActivity(i);
                 finish();
             }
@@ -81,6 +83,7 @@ public class Login extends AppCompatActivity {
                         ResultSet rs = stmt.executeQuery(query);
                         if(rs.next())
                         {
+                            stcode = rs.getString("stcode");
                             z = "Login successfull";
                             isSuccess = true;
                         }

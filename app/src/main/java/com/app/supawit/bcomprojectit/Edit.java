@@ -2,15 +2,14 @@ package com.app.supawit.bcomprojectit;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -98,7 +97,7 @@ public class Edit extends AppCompatActivity {
                                 z = "กรุณาใส่รหัสผ่าน 4 ตัวขึ้นไป !!";
                             }
                             else {
-                                String query = "update mas_st_pj " +
+                                String query = "update mas_st " +
                                 "set STCODE = '"+stcode+"',FULLNAME = '"+fullname+"',TEL = '"+tel+"',EMAIL = '"+email+"' "+
                                 "where STCODE = '"+stcM+"' "+
                                 "update sqltest "+
