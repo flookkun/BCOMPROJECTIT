@@ -14,7 +14,7 @@ public class ConnectionSQL {
 
     String ip = "5cosmeda.homeunix.com:1733";
     String classs = "net.sourceforge.jtds.jdbc.Driver";
-    String db = "CMD-BX";
+    String db = "flooketest";
     String usersql = "sa";
     String passwordsql = "0211";
 

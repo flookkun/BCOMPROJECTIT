@@ -58,7 +58,8 @@ public class warehouseFragment extends Fragment {
             connectionSQL = new ConnectionSQL();
             Connection con = connectionSQL.CONN();
             stmt = con.createStatement();
-            String query = "select *from [192.168.1.220].[CMD-BX].dbo.MAS_WH \n" +
+            String query =
+                    "select *from [192.168.1.220].[CMD-BX].dbo.MAS_WH \n" +
                     "where ADDR_ROW2 <> '1' and FULLNAME not like '%คลัง%' and (WHCODE like '1%' or WHCODE like '3%')\n" +
                     "\n" +
                     "union all\n" +
@@ -68,7 +69,7 @@ public class warehouseFragment extends Fragment {
                     "\n" +
                     "union all \n" +
                     "\n" +
-                    "select *from MAS_WH \n" +
+                    "select *from [CMD-BX].dbo.MAS_WH \n" +
                     "where whcode like '70%' and ADDR_ROW2 <> '1' "+
                     "order by whcode";
 

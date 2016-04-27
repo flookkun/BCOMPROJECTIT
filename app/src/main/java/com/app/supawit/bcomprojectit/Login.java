@@ -78,7 +78,10 @@ public class Login extends AppCompatActivity {
                     if (con == null) {
                         z = "Error in connection with SQL server";
                     } else {
-                        String query = "select * from mas_st where STCODE ='" + userid + "' and STPASSWORD ='" + password + "'";
+                        String query = "USE[CMD-BX]" +
+                                       "select * from mas_st " +
+                                       "where STCODE ='" + userid +
+                                       "' and STPASSWORD ='" + password + "'";
                         Statement stmt = con.createStatement();
                         ResultSet rs = stmt.executeQuery(query);
                         if(rs.next())

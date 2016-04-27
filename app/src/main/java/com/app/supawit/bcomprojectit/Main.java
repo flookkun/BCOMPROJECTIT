@@ -97,7 +97,9 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
             connectionSQL = new ConnectionSQL();
             Connection con = connectionSQL.CONN();
             stmt = con.createStatement();
-            String query = "select * from mas_st where stcode = '" + st +"'" ;
+            String query = "USE[CMD-BX]" +
+                           "select * from mas_st " +
+                           "where stcode = '" + st +"'" ;
             rs = stmt.executeQuery(query);
             if(rs.next())
             {
