@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragment.CapFragment">
-
     <TextView
         android:id="@+id/tt"
         android:layout_marginTop="74dp"
@@ -12,7 +11,6 @@
         android:layout_height="wrap_content"
         android:text="@string/hello_blank_fragment"
        />
-
     <android.support.v7.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -22,27 +20,17 @@
         android:layout_width="match_parent"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_height="150dp"
+        android:layout_height="325dp"
         android:layout_marginTop="100dp"
         android:layout_gravity="center_horizontal"
 
         >
         <Button
-            android:textStyle="bold"
             android:id="@+id/btnCap"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/btn"
-            />
+            android:background="@drawable/btn" />
     </android.support.v7.widget.CardView>
-
-    <ImageView
-        android:id="@+id/ima1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginTop="100dp"/>
-
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,5 +38,75 @@
         android:layout_margin="25dp"
         android:src="@drawable/disk"
         android:layout_gravity="right|bottom" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/ima1"
+            android:layout_marginLeft="20dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="100dp"
+
+             />
+
+        <ImageView
+            android:id="@+id/ima2"
+            android:layout_marginLeft="20dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="100dp"
+            android:layout_toRightOf="@+id/ima1"
+            android:src="@drawable/ic_menu_camera"
+            android:visibility="invisible"/>
+
+        <ImageView
+            android:id="@+id/ima3"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_menu_camera"
+            android:layout_below="@+id/ima1"
+            android:layout_alignLeft="@+id/ima1"
+            android:layout_alignStart="@+id/ima1"
+            android:visibility="invisible"/>
+
+        <ImageView
+            android:id="@+id/ima4"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_menu_camera"
+            android:layout_alignTop="@+id/ima3"
+            android:layout_alignLeft="@+id/ima2"
+            android:layout_alignStart="@+id/ima2"
+            android:visibility="invisible"/>
+
+        <ImageView
+            android:id="@+id/ima5"
+            android:src="@drawable/ic_menu_camera"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/ima3"
+            android:layout_alignLeft="@+id/ima3"
+            android:layout_alignStart="@+id/ima3"
+            android:visibility="invisible"/>
+
+
+        <ImageView
+            android:id="@+id/ima6"
+            android:src="@drawable/ic_menu_camera"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/ima4"
+            android:layout_alignLeft="@+id/ima4"
+            android:layout_alignStart="@+id/ima4"
+            android:visibility="invisible"/>
+
+
+    </RelativeLayout>
+
 
 </FrameLayout>

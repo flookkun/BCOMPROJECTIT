@@ -30,7 +30,7 @@ public class MainFragment extends Fragment{
     List<String> groupList;
     CustomViewGroup viewGroup1,viewGroup2,viewGroup3,viewGroup4;
     TextView az;
-    int i = 0;
+    int i = 0,ii = 0;
     int vg1 = 0,vg2 = 0,vg3 = 0,vg4 = 0;
     EditText ed1,ed2,ed3,ed4;
     String ea1,ea2,ea3,ea4;
@@ -42,7 +42,7 @@ public class MainFragment extends Fragment{
 
         //createGroupList();
         //createCollection();
-        RadioGroup rg1,rg2,rg3,rg4;
+        final RadioGroup rg1,rg2,rg3,rg4;
         Bundle bundle  = this.getArguments();
 
         View v = inflater.inflate(R.layout.fragment_main,null);
@@ -105,18 +105,31 @@ public class MainFragment extends Fragment{
                         Toast.makeText(getContext(),"checkedId",Toast.LENGTH_SHORT).show();
                         viewGroup1.setinvisble();
                         vg1 = viewGroup1.setvaluerb(R.id.customrb1);
-                        az.setText("1/30");
                         break;
+
                     case R.id.customrb2 :
                         Toast.makeText(getContext(),"GG",Toast.LENGTH_SHORT).show();
-                        vg1 = viewGroup1.setvaluerb(R.id.customrb2);
                         viewGroup1.setvisble();
                         ea1 = ed1.getText().toString();
-                        az.setText("1/30");
+                        vg1 = viewGroup1.setvaluerb(R.id.customrb2);
                         break;
                 }
-        }
+                if( i == 0 )
+                {
+                    i = 1;
+                }
+                else
+                {
+                    i = i+1;
+                }
+                az.setText(i + "/30");
+            }
+
+
+
         });
+
+
 
         rg2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -128,7 +141,7 @@ public class MainFragment extends Fragment{
                         Toast.makeText(getContext(),"HELLO",Toast.LENGTH_SHORT).show();
                         viewGroup2.setinvisble();
                         vg2 = viewGroup2.setvaluerb(R.id.customrb1);
-                        az.setText("2/30");
+                       // az.setText("2/30");
                         break;
 
                     case R.id.customrb2 :
@@ -136,9 +149,16 @@ public class MainFragment extends Fragment{
                         viewGroup2.setvisble();
                         vg2 = viewGroup2.setvaluerb(R.id.customrb2);
                         ea2 = ed2.getText().toString();
-                        az.setText("2/30");
+                        //az.setText("2/30");
                         break;
                 }
+                if( i == 0 ) {
+                    i = 1;
+                }
+                else if (i == 1){
+                    i = 2;
+                }
+                az.setText(i + "/30");
             }
         });
 
@@ -154,16 +174,26 @@ public class MainFragment extends Fragment{
                         viewGroup3.setinvisble();
                         vg3 = viewGroup3.setvaluerb(R.id.customrb1);
                         i++;
-                        az.setText("3/30");
+
                         break;
                     case R.id.customrb2 :
                         Toast.makeText(getContext(),"GG",Toast.LENGTH_SHORT).show();
                         vg3 = viewGroup3.setvaluerb(R.id.customrb2);
                         viewGroup3.setvisble();
                         ea3 = ed3.getText().toString();
-                        az.setText("3/30");
+
                         break;
                 }
+                if( i == 0 ) {
+                    i = 1;
+                }
+                else if (i == 1){
+                    i = 2;
+                }
+                else if (i == 2){
+                    i = 3;
+                }
+                az.setText(i + "/30");
             }
         });
 
@@ -177,7 +207,6 @@ public class MainFragment extends Fragment{
                         Toast.makeText(getContext(),"HELLO",Toast.LENGTH_SHORT).show();
                         viewGroup4.setinvisble();
                         vg4 = viewGroup4.setvaluerb(R.id.customrb1);
-                        az.setText("4/30");
                         break;
 
                     case R.id.customrb2 :
@@ -185,9 +214,22 @@ public class MainFragment extends Fragment{
                         viewGroup4.setvisble();
                         vg4 = viewGroup4.setvaluerb(R.id.customrb2);
                         ea4 = ed4.getText().toString();
-                        az.setText("4/30");
                         break;
                 }
+
+                if( i == 0 ) {
+                    i = 1;
+                }
+                else if (i == 1){
+                    i = 2;
+                }
+                else if (i == 2){
+                    i = 3;
+                }
+                else if (i == 3){
+                    i = 4;
+                }
+                az.setText(i + "/30");
             }
         });
 

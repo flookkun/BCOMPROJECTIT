@@ -49,7 +49,6 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragment_con,HOME.newInstance())
                     .commit();
-
         }
 
 
@@ -74,8 +73,6 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-
 
     }
 
