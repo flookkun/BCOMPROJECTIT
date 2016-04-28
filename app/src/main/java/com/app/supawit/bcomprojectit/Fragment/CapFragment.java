@@ -149,13 +149,9 @@ public class CapFragment extends Fragment {
                     Toast.makeText(getActivity(),ex.toString(),Toast.LENGTH_SHORT).show();
                 } catch (NullPointerException ex) {
                     Toast.makeText(getActivity(),ex.toString(),Toast.LENGTH_SHORT).show();
-                }
-                catch (Exception ex) {
+                } catch (Exception ex) {
                     Toast.makeText(getActivity(),ex.toString(),Toast.LENGTH_SHORT).show();
                 }
-
-
-
 
                /* Toast.makeText(getActivity(),"บันทึกสำเร็จ",Toast.LENGTH_SHORT).show();
                 //เปิดหน้า fragment

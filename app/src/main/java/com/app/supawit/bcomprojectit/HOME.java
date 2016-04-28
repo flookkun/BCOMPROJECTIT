@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.app.supawit.bcomprojectit.Fragment.TestImageFragment;
 import com.app.supawit.bcomprojectit.Fragment.warehouseFragment;
 
 
@@ -33,17 +34,11 @@ public class HOME extends Fragment implements View.OnClickListener  {
         rptbtn = (Button) v.findViewById(R.id.button2);
         mapbtn = (Button) v.findViewById(R.id.button4);
 
-
-
         chkbtn.setOnClickListener(this);
-
-
-
+        hisbtn.setOnClickListener(this);
 
         return v;
     }
-
-
     @Override
     public void onClick(View v) {
         if (v == chkbtn){
@@ -53,6 +48,15 @@ public class HOME extends Fragment implements View.OnClickListener  {
             FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
             //fragTransaction.replace(R.id.fragment_con,fragment);
             fragTransaction.replace(R.id.fragment_con,fragment).addToBackStack("tag").commit();
+
+        }
+
+        else if(v == hisbtn){
+
+            TestImageFragment fragment = new TestImageFragment();
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragTransacrion = fragmentManager.beginTransaction();
+            fragTransacrion.replace(R.id.fragment_con,fragment).addToBackStack("tag").commit();
 
         }
     }
