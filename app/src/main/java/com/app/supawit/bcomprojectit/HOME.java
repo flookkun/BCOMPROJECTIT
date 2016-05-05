@@ -16,6 +16,7 @@ import com.app.supawit.bcomprojectit.Fragment.warehouseFragment;
 public class HOME extends Fragment implements View.OnClickListener  {
 
     Button chkbtn,hisbtn,rptbtn,mapbtn;
+    String data;
 
     public static HOME newInstance() {
         HOME fragment = new HOME();
@@ -34,6 +35,11 @@ public class HOME extends Fragment implements View.OnClickListener  {
         rptbtn = (Button) v.findViewById(R.id.button2);
         mapbtn = (Button) v.findViewById(R.id.button4);
 
+        Bundle bundle  = this.getArguments();
+        String area = bundle.getString("Key");
+
+        data = area;
+
         chkbtn.setOnClickListener(this);
         hisbtn.setOnClickListener(this);
 
@@ -44,6 +50,11 @@ public class HOME extends Fragment implements View.OnClickListener  {
         if (v == chkbtn){
             //เปิดหน้า fragment
             warehouseFragment fragment = new warehouseFragment();
+
+            Bundle bundle = new Bundle();
+            bundle.putString("Key",data);
+            fragment.setArguments(bundle);
+
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
             //fragTransaction.replace(R.id.fragment_con,fragment);

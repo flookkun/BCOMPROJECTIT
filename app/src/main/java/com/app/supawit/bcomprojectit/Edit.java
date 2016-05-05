@@ -44,10 +44,7 @@ public class Edit extends AppCompatActivity {
         });
 
     }//Oncreate
-
-
     private void init() {
-
         stcM = getIntent().getExtras().getString("STCODE");
         connectionSQL = new ConnectionSQL();
         edtpass = (EditText) findViewById(R.id.edtxtpass);
@@ -57,10 +54,7 @@ public class Edit extends AppCompatActivity {
         edtemail = (EditText) findViewById(R.id.edtxtemail);
         btnstm = (Button) findViewById(R.id.btnstm);
         btnbtm = (Button) findViewById(R.id.btnbtm);
-
-
     }
-
     public class Doedit extends AsyncTask<String,String,String>
     {
         String z = "";

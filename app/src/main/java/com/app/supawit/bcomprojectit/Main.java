@@ -24,6 +24,7 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
     TextView txtv1;
     ConnectionSQL connectionSQL;
     String st = null;
+    String area = null;
     Statement stmt = null;
     ResultSet rs = null;
     NavigationView navigationView = null;
@@ -45,10 +46,18 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
         fragmentTransaction.commit();*/
         if(savedInstanceState == null)
         {
-            //HOME fragment = new HOME();
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragment_con,HOME.newInstance())
-                    .commit();
+            area = getIntent().getExtras().getString("STCODE");
+            HOME fragment = new HOME();
+
+            Bundle bundle = new Bundle();
+            bundle.putString("Key",area);
+            fragment.setArguments(bundle);
+
+
+            android.support.v4.app.FragmentTransaction fragmentTransaction =
+                    getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.add(R.id.fragment_con,fragment);
+            fragmentTransaction.commit();
         }
 
 
@@ -101,6 +110,7 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
                            "select * from mas_st " +
                            "where stcode = '" + st +"'" ;
             rs = stmt.executeQuery(query);
+
             if(rs.next())
             {
                 String fn = rs.getString("FULLNAME");

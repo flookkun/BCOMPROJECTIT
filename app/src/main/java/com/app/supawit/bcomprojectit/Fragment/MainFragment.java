@@ -4,6 +4,7 @@ package com.app.supawit.bcomprojectit.Fragment;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.util.AndroidRuntimeException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +14,16 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.app.supawit.bcomprojectit.ConnectionSQL;
 import com.app.supawit.bcomprojectit.R;
 import com.app.supawit.bcomprojectit.View.CustomViewGroup;
 
+import java.io.IOError;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,11 +37,14 @@ public class MainFragment extends Fragment{
     ExpandableListView expListView;
     List<String> groupList;
     CustomViewGroup viewGroup1,viewGroup2,viewGroup3,viewGroup4;
-    TextView az;
-    int i = 0,ii = 0;
+    TextView az,date1,date2,date3,date4;
+    int i = 0;
     int vg1 = 0,vg2 = 0,vg3 = 0,vg4 = 0;
     EditText ed1,ed2,ed3,ed4;
-    String ea1,ea2,ea3,ea4;
+    ConnectionSQL connectionSQL;
+    Statement stmt = null;
+    ResultSet rs = null;
+    String whcode;
 
 
 
@@ -43,9 +54,10 @@ public class MainFragment extends Fragment{
         //createGroupList();
         //createCollection();
         final RadioGroup rg1,rg2,rg3,rg4;
-        Bundle bundle  = this.getArguments();
+        final Bundle bundle  = this.getArguments();
+        final String head[] = new String[4];
 
-        View v = inflater.inflate(R.layout.fragment_main,null);
+        final View v = inflater.inflate(R.layout.fragment_main,null);
 
        /* mCrimeRecyclerView = (RecyclerView) v.findViewById(R.id.crime_recycler_view);
         mCrimeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -61,7 +73,7 @@ public class MainFragment extends Fragment{
         az = (TextView) v.findViewById(R.id.txtscore);
 
 
-        az.setText(i+"/30");
+        az.setText(i+"/4");
 
         /// set ViewGroup ///
 
@@ -72,10 +84,10 @@ public class MainFragment extends Fragment{
         viewGroup4 = (CustomViewGroup) v.findViewById(R.id.viewgroup4);
         /// set text ///
 
-        viewGroup1.settxt("1.หัวข้อ");
-        viewGroup2.settxt("2.หัวข้อ");
-        viewGroup3.settxt("3.หัวข้อ");
-        viewGroup4.settxt("4.หัวข้อ");
+        head[0] = viewGroup1.settxt("1.หัวข้อ");
+        head[1] = viewGroup2.settxt("2.หัวข้อ");
+        head[2] = viewGroup3.settxt("3.หัวข้อ");
+        head[3] = viewGroup4.settxt("4.หัวข้อ");
 
         /// set radiobutton ///
 
@@ -94,6 +106,48 @@ public class MainFragment extends Fragment{
         ed4 = (EditText) viewGroup4.findViewById(R.id.customedt);
 
 
+        //set textview date///
+
+        date1 = (TextView) viewGroup1.findViewById(R.id.setdate);
+        date2 = (TextView) viewGroup2.findViewById(R.id.setdate);
+        date3 = (TextView) viewGroup3.findViewById(R.id.setdate);
+        date4 = (TextView) viewGroup4.findViewById(R.id.setdate);
+
+        /// set Onclick txt ///
+
+
+
+        date1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewGroup1.settime();
+            }
+        });
+
+
+
+        date2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewGroup2.settime();
+            }
+        });
+
+        date3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewGroup3.settime();
+            }
+        });
+
+        date4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewGroup4.settime();
+            }
+        });
+
+
         /// setOncheck ///
 
         rg1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -102,33 +156,24 @@ public class MainFragment extends Fragment{
                 switch (checkedId)
                 {
                     case R.id.customrb1 :
-                        Toast.makeText(getContext(),"checkedId",Toast.LENGTH_SHORT).show();
-                        viewGroup1.setinvisble();
                         vg1 = viewGroup1.setvaluerb(R.id.customrb1);
+                        //Toast.makeText(getContext(),"checkedId",Toast.LENGTH_SHORT).show();
+                        viewGroup1.setinvisble();
                         break;
-
                     case R.id.customrb2 :
-                        Toast.makeText(getContext(),"GG",Toast.LENGTH_SHORT).show();
-                        viewGroup1.setvisble();
-                        ea1 = ed1.getText().toString();
                         vg1 = viewGroup1.setvaluerb(R.id.customrb2);
+                        //Toast.makeText(getContext(),"GG",Toast.LENGTH_SHORT).show();
+                        viewGroup1.setvisble();
+                        //ea1 = ed1.getText().toString();
                         break;
                 }
-                if( i == 0 )
-                {
-                    i = 1;
-                }
-                else
-                {
-                    i = i+1;
-                }
-                az.setText(i + "/30");
+
+                az.setText(i+vg1+vg2+vg3+vg4+"/4");
+
             }
 
 
-
         });
-
 
 
         rg2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -138,62 +183,42 @@ public class MainFragment extends Fragment{
                 switch (checkedId)
                 {
                     case R.id.customrb1 :
-                        Toast.makeText(getContext(),"HELLO",Toast.LENGTH_SHORT).show();
-                        viewGroup2.setinvisble();
                         vg2 = viewGroup2.setvaluerb(R.id.customrb1);
+                        //Toast.makeText(getContext(),"HELLO",Toast.LENGTH_SHORT).show();
+                        viewGroup2.setinvisble();
                        // az.setText("2/30");
                         break;
 
                     case R.id.customrb2 :
-                        Toast.makeText(getContext(),"GG",Toast.LENGTH_SHORT).show();
-                        viewGroup2.setvisble();
                         vg2 = viewGroup2.setvaluerb(R.id.customrb2);
-                        ea2 = ed2.getText().toString();
+                        //Toast.makeText(getContext(),"GG",Toast.LENGTH_SHORT).show();
+                        viewGroup2.setvisble();
+                        //ea2 = ed2.getText().toString();
                         //az.setText("2/30");
                         break;
                 }
-                if( i == 0 ) {
-                    i = 1;
-                }
-                else if (i == 1){
-                    i = 2;
-                }
-                az.setText(i + "/30");
+                az.setText(i+vg1+vg2+vg3+vg4+"/4");
             }
         });
 
         rg3.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-
                 switch (checkedId)
                 {
                     case R.id.customrb1 :
-                        Toast.makeText(getContext(),"checkedId",Toast.LENGTH_SHORT).show();
-                        viewGroup3.setinvisble();
                         vg3 = viewGroup3.setvaluerb(R.id.customrb1);
-                        i++;
-
+                        //Toast.makeText(getContext(),"checkedId",Toast.LENGTH_SHORT).show();
+                        viewGroup3.setinvisble();
                         break;
                     case R.id.customrb2 :
-                        Toast.makeText(getContext(),"GG",Toast.LENGTH_SHORT).show();
                         vg3 = viewGroup3.setvaluerb(R.id.customrb2);
+                        //Toast.makeText(getContext(),"GG",Toast.LENGTH_SHORT).show();
                         viewGroup3.setvisble();
-                        ea3 = ed3.getText().toString();
-
+                        //ea3 = ed3.getText().toString();
                         break;
                 }
-                if( i == 0 ) {
-                    i = 1;
-                }
-                else if (i == 1){
-                    i = 2;
-                }
-                else if (i == 2){
-                    i = 3;
-                }
-                az.setText(i + "/30");
+                az.setText(i+vg1+vg2+vg3+vg4+"/4");
             }
         });
 
@@ -204,34 +229,24 @@ public class MainFragment extends Fragment{
                 switch (checkedId)
                 {
                     case R.id.customrb1 :
-                        Toast.makeText(getContext(),"HELLO",Toast.LENGTH_SHORT).show();
-                        viewGroup4.setinvisble();
                         vg4 = viewGroup4.setvaluerb(R.id.customrb1);
+                        //Toast.makeText(getContext(),"HELLO",Toast.LENGTH_SHORT).show();
+                        viewGroup4.setinvisble();
+
                         break;
 
                     case R.id.customrb2 :
-                        Toast.makeText(getContext(),"GG",Toast.LENGTH_SHORT).show();
-                        viewGroup4.setvisble();
                         vg4 = viewGroup4.setvaluerb(R.id.customrb2);
-                        ea4 = ed4.getText().toString();
+                        //Toast.makeText(getContext(),"GG",Toast.LENGTH_SHORT).show();
+                        viewGroup4.setvisble();
+                        //ea4 = ed4.getText().toString();
                         break;
                 }
-
-                if( i == 0 ) {
-                    i = 1;
-                }
-                else if (i == 1){
-                    i = 2;
-                }
-                else if (i == 2){
-                    i = 3;
-                }
-                else if (i == 3){
-                    i = 4;
-                }
-                az.setText(i + "/30");
+                az.setText(i+vg1+vg2+vg3+vg4+"/4");
             }
         });
+
+
 
 
 
@@ -243,23 +258,104 @@ public class MainFragment extends Fragment{
 
         /////////////////////////////////////////////////////////////////////////////////////////////
 
-        TextView ax = (TextView) v.findViewById(R.id.txttest1);
-        String a = bundle.getString("Key");
+        final TextView ax = (TextView) v.findViewById(R.id.txttest1);
+        final String a = bundle.getString("Key");
+        final String area = bundle.getString("area");
+        final String abbname = bundle.getString("wh");
+
+
         ax.setText(a);
+
+
+        /// Link DB //
+
+        try {
+            connectionSQL = new ConnectionSQL();
+            Connection con = connectionSQL.CONN();
+            stmt = con.createStatement();
+            String query =
+                    "select *from Tmp_whcode where whcode = '"+abbname+"'";
+
+            rs = stmt.executeQuery(query);
+
+            while(rs.next()) {
+                whcode = rs.getString("ABBNAME");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
 
         FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(),vg1
-                        +" " + ed1.getText().toString()
-                        +" บันทึกสำเร็จ "
-                        + vg2 +" "
-                        + ed2.getText().toString() ,Toast.LENGTH_SHORT).show();
-                //เปิดหน้า fragment
-                //getFragmentManager().executePendingTransactions();
-                getFragmentManager().popBackStack();
+                String text[] = new String[4];
+
+                text[0] = ed1.getText().toString();
+                text[1] = ed2.getText().toString();
+                text[2] = ed3.getText().toString();
+                text[3] = ed4.getText().toString();
+
+
+                Integer point[] = new Integer[4];
+                point[0] = vg1;
+                point[1] = vg2;
+                point[2] = vg3;
+                point[3] = vg4;
+
+
+                String dd[] = new String[4];
+                dd[0] = date1.getText().toString();
+                dd[1] = date2.getText().toString();
+                dd[2] = date3.getText().toString();
+                dd[3] = date4.getText().toString();
+
+
+
+
+
+
+                try {
+                    connectionSQL = new ConnectionSQL();
+                    Connection con = connectionSQL.CONN();
+                    for (int i = 0 ; i < 4 ;i++)
+                    {
+                        stmt = con.createStatement();
+                        String commands = "insert MAS_PJ " +
+                        //"select '"+a+"','"+ head[i]+"','"+area+"',GETDATE(),'"+dd[i]+"','"+text[i]+"','"+ point[i] +"','"+az.getText().toString()+"'";
+                        " VALUES ('"+a+"','"+head[i]+"','"+area+"',CONVERT(VARCHAR(10),GETDATE(),110),'"+dd[i]+"','"+text[i]+"','"+ point[i] +"','"+az.getText().toString()+"')";
+
+                        PreparedStatement preStmt = con.prepareStatement(commands);
+                        preStmt.executeUpdate();
+                    }
+
+                    stmt = con.createStatement();
+                    String commands = "insert MAS_PJ_REPORT " +
+                            //"select '"+a+"','"+ head[i]+"','"+area+"',GETDATE(),'"+dd[i]+"','"+text[i]+"','"+ point[i] +"','"+az.getText().toString()+"'";
+                            " VALUES ('"+ whcode +"','"+a+"','"+area+"',CONVERT(VARCHAR(10),GETDATE(),110),'"+az.getText().toString()+"')";
+                    PreparedStatement preStmt = con.prepareStatement(commands);
+                    preStmt.executeUpdate();
+
+
+                    Toast.makeText(getActivity(),"บันทึกสำเร็จ",Toast.LENGTH_SHORT).show();
+                    //เปิดหน้า fragment
+                    //getFragmentManager().executePendingTransactions();
+                    getFragmentManager().popBackStack();
+
+                }catch (SQLException ex){
+                    Toast.makeText(getActivity(),ex.toString(),Toast.LENGTH_SHORT).show();
+                } catch (IOError ex) {
+                    Toast.makeText(getActivity(),ex.toString(),Toast.LENGTH_SHORT).show();
+                } catch (AndroidRuntimeException ex) {
+                    Toast.makeText(getActivity(),ex.toString(),Toast.LENGTH_SHORT).show();
+                } catch (NullPointerException ex) {
+                    Toast.makeText(getActivity(),ex.toString(),Toast.LENGTH_SHORT).show();
+                } catch (Exception ex) {
+                    Toast.makeText(getActivity(),ex.toString(),Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 

@@ -23,22 +23,6 @@
         android:dividerHeight="2dp" />
         -->
 
-    <RelativeLayout
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="25dp"
-        android:background="@drawable/circle"
-        android:layout_alignParentRight="true">
-        <TextView
-            android:id="@+id/txtscore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0/30"
-            android:layout_centerInParent="true"
-            />
-
-    </RelativeLayout>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -46,6 +30,23 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="25dp"
+                android:background="@drawable/circle"
+                android:layout_alignParentRight="true">
+                <TextView
+                    android:id="@+id/txtscore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0/30"
+                    android:layout_centerInParent="true"
+                    />
+
+            </RelativeLayout>
+
 
             <TextView
                 android:layout_marginTop="20dp"
@@ -55,50 +56,45 @@
                 android:id="@+id/txttest1"
                 android:text="กกก"/>
 
-
-
             <com.app.supawit.bcomprojectit.View.CustomViewGroup
-
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
                 android:id="@+id/viewgroup1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
-                >
-
+                android:layout_marginTop="80dp">
             </com.app.supawit.bcomprojectit.View.CustomViewGroup>
-
             <com.app.supawit.bcomprojectit.View.CustomViewGroup
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
                 android:id="@+id/viewgroup2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/viewgroup1"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true">
-
             </com.app.supawit.bcomprojectit.View.CustomViewGroup>
-
             <com.app.supawit.bcomprojectit.View.CustomViewGroup
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
                 android:id="@+id/viewgroup3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/viewgroup2"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true">
-
             </com.app.supawit.bcomprojectit.View.CustomViewGroup>
-
             <com.app.supawit.bcomprojectit.View.CustomViewGroup
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
                 android:id="@+id/viewgroup4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/viewgroup3"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true">
-
             </com.app.supawit.bcomprojectit.View.CustomViewGroup>
-
         </RelativeLayout>
-
     </ScrollView>
 
     <android.support.design.widget.FloatingActionButton

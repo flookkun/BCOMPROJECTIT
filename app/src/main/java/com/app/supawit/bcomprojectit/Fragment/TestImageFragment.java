@@ -52,7 +52,7 @@ public class TestImageFragment extends Fragment {
             connectionSQL = new ConnectionSQL();
             Connection con = connectionSQL.CONN();
             stmt = con.createStatement();
-            String truckstring = "select *from ImgTbl2 where imgName= 'TEST' ";
+            String truckstring = "select *from ImgTbl2 where id = '6' ";
             Statement stmt = con.createStatement();
             rs = stmt.executeQuery(truckstring);
 
@@ -75,8 +75,6 @@ public class TestImageFragment extends Fragment {
         } catch (Exception ex) {
             Toast.makeText(getActivity(),ex.toString(),Toast.LENGTH_SHORT).show();
         }
-
-
 
 
         return v;

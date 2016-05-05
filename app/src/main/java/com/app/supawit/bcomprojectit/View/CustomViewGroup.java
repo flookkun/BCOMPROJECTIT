@@ -1,12 +1,14 @@
 package com.app.supawit.bcomprojectit.View;
 
 import android.annotation.TargetApi;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
@@ -15,6 +17,8 @@ import android.widget.TextView;
 
 import com.app.supawit.bcomprojectit.R;
 
+import java.util.Calendar;
+
 /**
  * Created by froz on 4/20/2016.
  */
@@ -22,9 +26,10 @@ public class CustomViewGroup extends FrameLayout {
 
     private RadioGroup rbg1;
     private RadioButton rb1,rb2;
-    private TextView txt;
+    private TextView txt,setdate,date;
     private EditText edt;
     int value = 0;
+    private int mYear, mMonth, mDay;
     public CustomViewGroup(Context context) {
         super(context);
         initInflate();
@@ -54,7 +59,6 @@ public class CustomViewGroup extends FrameLayout {
     private void initInflate(){
         //inflate
         inflate(getContext(), R.layout.customview,this);
-
     }
 
 
@@ -65,22 +69,28 @@ public class CustomViewGroup extends FrameLayout {
         rbg1 = (RadioGroup) findViewById(R.id.customradiogroup);
         rb1 = (RadioButton) findViewById(R.id.customrb1);
         rb2 = (RadioButton) findViewById(R.id.customrb2);
-
+        setdate = (TextView) findViewById(R.id.setdate);
+        date = (TextView) findViewById(R.id.date);
 
     }
 
-    public void settxt (String a){
+    public String settxt (String a){
         txt.setText(a);
+        return a;
     }
 
 
     public void setvisble (){
 
         edt.setVisibility(View.VISIBLE);
+        date.setVisibility(View.VISIBLE);
+        setdate.setVisibility(View.VISIBLE);
     }
 
     public void setinvisble(){
         edt.setVisibility(View.INVISIBLE);
+        date.setVisibility(View.INVISIBLE);
+        setdate.setVisibility(View.INVISIBLE);
     }
 
     public int setvaluerb(int h){
@@ -97,17 +107,27 @@ public class CustomViewGroup extends FrameLayout {
         return value;
     }
 
+    public void settime (){
 
- /*public void setChkbox(boolean isCheck){
+        final Calendar c = Calendar.getInstance();
+        mYear = c.get(Calendar.YEAR);
+        mMonth = c.get(Calendar.MONTH);
+        mDay = c.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog dpd = new DatePickerDialog(getContext() ,
+                new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                String dd = dayOfMonth + "/" + (monthOfYear+1) + "/" + year;
+                setdate.setText(dd);
+            }
+        },mYear,mMonth,mDay );
+        dpd.show();
+
 
 
 
     }
-
-    public void setChkboxtext(String text){
-
-    }
-    */
 
 
     @Override

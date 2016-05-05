@@ -37,12 +37,13 @@ public class warehouseFragment extends Fragment {
     ArrayAdapter<String> adapter;
 
     EditText inputSearch;
-
+    String area;
     ConnectionSQL connectionSQL;
     ArrayList<String> list;
     Statement stmt = null;
     ResultSet rs = null;
 
+    String abbname;
     public warehouseFragment() {
         // Required empty public constructor
     }
@@ -54,35 +55,27 @@ public class warehouseFragment extends Fragment {
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.fragment_warehouse,null);
 
+        Bundle bundle  = this.getArguments();
+        area = bundle.getString("Key");
+
+
         try {
             connectionSQL = new ConnectionSQL();
             Connection con = connectionSQL.CONN();
             stmt = con.createStatement();
             String query =
-                    "select *from [192.168.1.220].[CMD-BX].dbo.MAS_WH \n" +
-                    "where ADDR_ROW2 <> '1' and FULLNAME not like '%คลัง%' and (WHCODE like '1%' or WHCODE like '3%')\n" +
-                    "\n" +
-                    "union all\n" +
-                    "\n" +
-                    "select *from [192.168.1.24,1833].[CMD-BX].dbo.MAS_WH \n" +
-                    "where ADDR_ROW2 <> '1' and FULLNAME not like '%คลัง%' and WHCODE like '5%' \n" +
-                    "\n" +
-                    "union all \n" +
-                    "\n" +
-                    "select *from [CMD-BX].dbo.MAS_WH \n" +
-                    "where whcode like '70%' and ADDR_ROW2 <> '1' "+
-                    "order by whcode";
+                    "select *from Tmp_whcode";
 
             rs = stmt.executeQuery(query);
 
             list = new ArrayList<>();
 
             while(rs.next()) {
-
-                String abbname = rs.getString("ABBNAME");
+                abbname = rs.getString("ABBNAME");
                 String whcode = rs.getString("WHCODE");
                 list.add(whcode + ":" + abbname);
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -148,6 +141,7 @@ public class warehouseFragment extends Fragment {
             menuQAFragment fragment = new menuQAFragment();
             Bundle bundle = new Bundle();
             bundle.putString("Key",txt.getText().toString());
+            bundle.putString("area",area);
             fragment.setArguments(bundle);
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragTransaction = fragmentManager.beginTransaction();

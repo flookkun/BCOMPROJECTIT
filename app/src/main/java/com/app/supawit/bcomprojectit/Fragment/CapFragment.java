@@ -62,8 +62,8 @@ public class CapFragment extends Fragment {
         // Inflate the layout for this fragment
         Bundle bundle  = this.getArguments();
         View v = inflater.inflate(R.layout.fragment_cap, null);
-        TextView show = (TextView) v.findViewById(R.id.tt);
-        String ss = bundle.getString("Key");
+        final TextView show = (TextView) v.findViewById(R.id.tt);
+        final String ss = bundle.getString("Key");
         show.setText(ss);
         image = (ImageView) v.findViewById(R.id.ima1);
         image2 = (ImageView) v.findViewById(R.id.ima2);
@@ -132,7 +132,7 @@ public class CapFragment extends Fragment {
                     Connection con = connectionSQL.CONN();
                     stmt = con.createStatement();
                     String commands = "Insert into ImgTbl2 (ImgName,Img) values ('"
-                            + "TEST" + "','" + encodedImage
+                            + ss + "','" + encodedImage
                             + "')";
                     PreparedStatement preStmt = con.prepareStatement(commands);
                     preStmt.executeUpdate();
@@ -192,7 +192,7 @@ public class CapFragment extends Fragment {
                     e.printStackTrace();
                 }
                 image.setImageBitmap(pic);
-                Toast.makeText(getContext(),encodedImage,Toast.LENGTH_LONG).show();
+                //Toast.makeText(getContext(),encodedImage,Toast.LENGTH_LONG).show();
 
             }
             else if (requestCode == 2){

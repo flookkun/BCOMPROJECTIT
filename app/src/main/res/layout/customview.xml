@@ -4,64 +4,92 @@
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     >
-
-    <TextView
-        android:id="@+id/customtxt"
+    <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card1qa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="1.หัวข้อ"
-        android:textColor="#000"/>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        >
+        <LinearLayout
 
-    <RadioGroup
-        android:id="@+id/customradiogroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <RadioButton
-            android:id="@+id/customrb1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ผ่าน"
-            android:layout_marginLeft="50dp"/>
-        <RadioButton
-            android:id="@+id/customrb2"
-            android:layout_marginLeft="50dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ไม่ผ่าน"/>
-    </RadioGroup>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:baselineAligned="false">
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/customtxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="1.หัวข้อ"
+                android:textColor="#000"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/customedt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"/>
+                <RadioGroup
+                    android:id="@+id/customradiogroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/customrb1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ผ่าน"
+                        android:layout_marginLeft="50dp"/>
+                    <RadioButton
+                        android:id="@+id/customrb2"
+                        android:layout_marginLeft="50dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ไม่ผ่าน"/>
+                </RadioGroup>
 
-    <TextView
-        android:visibility="invisible"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="Crime Date"
-        android:textColor="#000"/>
 
-    <!--
-    <CheckBox
-        android:id="@+id/chkbk"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="8dp"
-        android:text="Solved"
-        />
-        -->
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/customedt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="กำหนดเสร็จ"
+                    android:textColor="#000"
+                    android:visibility="invisible"/>
+
+                <TextView
+                    android:id="@+id/setdate"
+                    android:layout_marginLeft="100dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="วันที่"
+                    android:textColor="#000"
+                    android:visibility="invisible"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
 
 </LinearLayout>

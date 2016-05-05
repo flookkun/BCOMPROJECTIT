@@ -80,15 +80,16 @@
 
     </LinearLayout>
     <TextView
+        android:id="@+id/longtxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="GPS…\n10/341  นวลจันทร์\nกทม. 10230"
+        android:text="Please Waiting GPS...."
         android:textColor="#000"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"/>
 
-
+    <!--android:text="GPS…\n10/341  นวลจันทร์\nกทม. 10230"-->
 
 
 </RelativeLayout>
