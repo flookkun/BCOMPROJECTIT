@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.app.supawit.bcomprojectit.Fragment.TestImageFragment;
+import com.app.supawit.bcomprojectit.Fragment.HistoryFragment;
 import com.app.supawit.bcomprojectit.Fragment.warehouseFragment;
 
 
@@ -64,7 +64,12 @@ public class HOME extends Fragment implements View.OnClickListener  {
 
         else if(v == hisbtn){
 
-            TestImageFragment fragment = new TestImageFragment();
+            HistoryFragment fragment = new HistoryFragment();
+
+            Bundle bundle = new Bundle();
+            bundle.putString("Key",data);
+            fragment.setArguments(bundle);
+
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragTransacrion = fragmentManager.beginTransaction();
             fragTransacrion.replace(R.id.fragment_con,fragment).addToBackStack("tag").commit();

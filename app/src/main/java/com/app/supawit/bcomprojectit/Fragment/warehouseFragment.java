@@ -35,7 +35,7 @@ public class warehouseFragment extends Fragment {
     private ListView lv;
 
     ArrayAdapter<String> adapter;
-
+    int check = 1;
     EditText inputSearch;
     String area;
     ConnectionSQL connectionSQL;

@@ -124,8 +124,6 @@ public class MainFragment extends Fragment{
             }
         });
 
-
-
         date2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -262,6 +260,7 @@ public class MainFragment extends Fragment{
         final String a = bundle.getString("Key");
         final String area = bundle.getString("area");
         final String abbname = bundle.getString("wh");
+        final Integer chk = bundle.getInt("chk");
 
 
         ax.setText(a);
@@ -315,46 +314,50 @@ public class MainFragment extends Fragment{
 
 
 
-
-
-                try {
-                    connectionSQL = new ConnectionSQL();
-                    Connection con = connectionSQL.CONN();
-                    for (int i = 0 ; i < 4 ;i++)
-                    {
+                if (chk == 1)
+                {
+                    try {
+                        connectionSQL = new ConnectionSQL();
+                        Connection con = connectionSQL.CONN();
+                        for (int i = 0 ; i < 4 ;i++)
+                        {
+                            stmt = con.createStatement();
+                            String commands = "insert MAS_PJ " +
+                                    //"select '"+a+"','"+ head[i]+"','"+area+"',GETDATE(),'"+dd[i]+"','"+text[i]+"','"+ point[i] +"','"+az.getText().toString()+"'";
+                                    " VALUES ('"+a+"','"+head[i]+"','"+area+"',CONVERT(VARCHAR(10),GETDATE(),110),'"+dd[i]+"','"+text[i]+"','"+ point[i] +"','"+az.getText().toString()+"')";
+                            PreparedStatement preStmt = con.prepareStatement(commands);
+                            preStmt.executeUpdate();
+                        }
                         stmt = con.createStatement();
-                        String commands = "insert MAS_PJ " +
-                        //"select '"+a+"','"+ head[i]+"','"+area+"',GETDATE(),'"+dd[i]+"','"+text[i]+"','"+ point[i] +"','"+az.getText().toString()+"'";
-                        " VALUES ('"+a+"','"+head[i]+"','"+area+"',CONVERT(VARCHAR(10),GETDATE(),110),'"+dd[i]+"','"+text[i]+"','"+ point[i] +"','"+az.getText().toString()+"')";
-
+                        String commands = "insert MAS_PJ_REPORT " +
+                                //"select '"+a+"','"+ head[i]+"','"+area+"',GETDATE(),'"+dd[i]+"','"+text[i]+"','"+ point[i] +"','"+az.getText().toString()+"'";
+                                " VALUES ('"+ whcode +"','"+a+"','"+area+"',CONVERT(VARCHAR(10),GETDATE(),110),'"+az.getText().toString()+"')";
                         PreparedStatement preStmt = con.prepareStatement(commands);
                         preStmt.executeUpdate();
+                        Toast.makeText(getActivity(),"บันทึกสำเร็จ",Toast.LENGTH_SHORT).show();
+                        //เปิดหน้า fragment
+                        //getFragmentManager().executePendingTransactions();
+                        getFragmentManager().popBackStack();
+
+                    }catch (SQLException ex){
+                        Toast.makeText(getActivity(),ex.toString(),Toast.LENGTH_SHORT).show();
+                    } catch (IOError ex) {
+                        Toast.makeText(getActivity(),ex.toString(),Toast.LENGTH_SHORT).show();
+                    } catch (AndroidRuntimeException ex) {
+                        Toast.makeText(getActivity(),ex.toString(),Toast.LENGTH_SHORT).show();
+                    } catch (NullPointerException ex) {
+                        Toast.makeText(getActivity(),ex.toString(),Toast.LENGTH_SHORT).show();
+                    } catch (Exception ex) {
+                        Toast.makeText(getActivity(),ex.toString(),Toast.LENGTH_SHORT).show();
                     }
+                } else if(chk == 0){
 
-                    stmt = con.createStatement();
-                    String commands = "insert MAS_PJ_REPORT " +
-                            //"select '"+a+"','"+ head[i]+"','"+area+"',GETDATE(),'"+dd[i]+"','"+text[i]+"','"+ point[i] +"','"+az.getText().toString()+"'";
-                            " VALUES ('"+ whcode +"','"+a+"','"+area+"',CONVERT(VARCHAR(10),GETDATE(),110),'"+az.getText().toString()+"')";
-                    PreparedStatement preStmt = con.prepareStatement(commands);
-                    preStmt.executeUpdate();
+                    Toast.makeText(getActivity(),"กูมาจากหน้าอื่น",Toast.LENGTH_LONG).show();
 
-
-                    Toast.makeText(getActivity(),"บันทึกสำเร็จ",Toast.LENGTH_SHORT).show();
-                    //เปิดหน้า fragment
-                    //getFragmentManager().executePendingTransactions();
-                    getFragmentManager().popBackStack();
-
-                }catch (SQLException ex){
-                    Toast.makeText(getActivity(),ex.toString(),Toast.LENGTH_SHORT).show();
-                } catch (IOError ex) {
-                    Toast.makeText(getActivity(),ex.toString(),Toast.LENGTH_SHORT).show();
-                } catch (AndroidRuntimeException ex) {
-                    Toast.makeText(getActivity(),ex.toString(),Toast.LENGTH_SHORT).show();
-                } catch (NullPointerException ex) {
-                    Toast.makeText(getActivity(),ex.toString(),Toast.LENGTH_SHORT).show();
-                } catch (Exception ex) {
-                    Toast.makeText(getActivity(),ex.toString(),Toast.LENGTH_SHORT).show();
                 }
+
+
+
 
             }
         });
