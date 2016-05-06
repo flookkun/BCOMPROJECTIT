@@ -33,6 +33,7 @@ public class menuQAFragment extends Fragment {
     String area;
     String abbname;
     ConnectionSQL connectionSQL;
+    Integer check = 1;
     public menuQAFragment() {
         // Required empty public constructor
     }
@@ -95,6 +96,7 @@ public class menuQAFragment extends Fragment {
                 bundle.putString("Key",test.getText().toString());
                 bundle.putString("area",area);
                 bundle.putString("wh",a.substring(0,4));
+                bundle.putInt("chk",check);
                 fragment.setArguments(bundle);
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
