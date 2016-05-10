@@ -53,9 +53,11 @@ public class MainFragment extends Fragment{
 
         //createGroupList();
         //createCollection();
+
         final RadioGroup rg1,rg2,rg3,rg4;
         final Bundle bundle  = this.getArguments();
         final String head[] = new String[4];
+        final Integer chk = bundle.getInt("chk");
 
         final View v = inflater.inflate(R.layout.fragment_main,null);
 
@@ -74,248 +76,240 @@ public class MainFragment extends Fragment{
 
 
         az.setText(i+"/4");
-
-        /// set ViewGroup ///
-
-
-        viewGroup1 = (CustomViewGroup) v.findViewById(R.id.viewgroup1);
-        viewGroup2 = (CustomViewGroup) v.findViewById(R.id.viewgroup2);
-        viewGroup3 = (CustomViewGroup) v.findViewById(R.id.viewgroup3);
-        viewGroup4 = (CustomViewGroup) v.findViewById(R.id.viewgroup4);
-        /// set text ///
-
-        head[0] = viewGroup1.settxt("1.หัวข้อ");
-        head[1] = viewGroup2.settxt("2.หัวข้อ");
-        head[2] = viewGroup3.settxt("3.หัวข้อ");
-        head[3] = viewGroup4.settxt("4.หัวข้อ");
-
-        /// set radiobutton ///
-
-        rg1 = (RadioGroup) viewGroup1.findViewById(R.id.customradiogroup);
-        rg2 = (RadioGroup) viewGroup2.findViewById(R.id.customradiogroup);
-        rg3 = (RadioGroup) viewGroup3.findViewById(R.id.customradiogroup);
-        rg4 = (RadioGroup) viewGroup4.findViewById(R.id.customradiogroup);
+        if(chk==1){
+            /// set ViewGroup ///
 
 
-        /// set edittext ///
+            viewGroup1 = (CustomViewGroup) v.findViewById(R.id.viewgroup1);
+            viewGroup2 = (CustomViewGroup) v.findViewById(R.id.viewgroup2);
+            viewGroup3 = (CustomViewGroup) v.findViewById(R.id.viewgroup3);
+            viewGroup4 = (CustomViewGroup) v.findViewById(R.id.viewgroup4);
+            /// set text ///
+
+            head[0] = viewGroup1.settxt("1.หัวข้อ");
+            head[1] = viewGroup2.settxt("2.หัวข้อ");
+            head[2] = viewGroup3.settxt("3.หัวข้อ");
+            head[3] = viewGroup4.settxt("4.หัวข้อ");
+
+            /// set radiobutton ///
+
+            rg1 = (RadioGroup) viewGroup1.findViewById(R.id.customradiogroup);
+            rg2 = (RadioGroup) viewGroup2.findViewById(R.id.customradiogroup);
+            rg3 = (RadioGroup) viewGroup3.findViewById(R.id.customradiogroup);
+            rg4 = (RadioGroup) viewGroup4.findViewById(R.id.customradiogroup);
 
 
-        ed1 = (EditText) viewGroup1.findViewById(R.id.customedt);
-        ed2 = (EditText) viewGroup2.findViewById(R.id.customedt);
-        ed3 = (EditText) viewGroup3.findViewById(R.id.customedt);
-        ed4 = (EditText) viewGroup4.findViewById(R.id.customedt);
+            /// set edittext ///
 
 
-        //set textview date///
-
-        date1 = (TextView) viewGroup1.findViewById(R.id.setdate);
-        date2 = (TextView) viewGroup2.findViewById(R.id.setdate);
-        date3 = (TextView) viewGroup3.findViewById(R.id.setdate);
-        date4 = (TextView) viewGroup4.findViewById(R.id.setdate);
-
-        /// set Onclick txt ///
+            ed1 = (EditText) viewGroup1.findViewById(R.id.customedt);
+            ed2 = (EditText) viewGroup2.findViewById(R.id.customedt);
+            ed3 = (EditText) viewGroup3.findViewById(R.id.customedt);
+            ed4 = (EditText) viewGroup4.findViewById(R.id.customedt);
 
 
+            //set textview date///
 
-        date1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewGroup1.settime();
-            }
-        });
+            date1 = (TextView) viewGroup1.findViewById(R.id.setdate);
+            date2 = (TextView) viewGroup2.findViewById(R.id.setdate);
+            date3 = (TextView) viewGroup3.findViewById(R.id.setdate);
+            date4 = (TextView) viewGroup4.findViewById(R.id.setdate);
 
-        date2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewGroup2.settime();
-            }
-        });
-
-        date3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewGroup3.settime();
-            }
-        });
-
-        date4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewGroup4.settime();
-            }
-        });
+            /// set Onclick txt ///
 
 
-        /// setOncheck ///
 
-        rg1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId)
-                {
-                    case R.id.customrb1 :
-                        vg1 = viewGroup1.setvaluerb(R.id.customrb1);
-                        //Toast.makeText(getContext(),"checkedId",Toast.LENGTH_SHORT).show();
-                        viewGroup1.setinvisble();
-                        break;
-                    case R.id.customrb2 :
-                        vg1 = viewGroup1.setvaluerb(R.id.customrb2);
-                        //Toast.makeText(getContext(),"GG",Toast.LENGTH_SHORT).show();
-                        viewGroup1.setvisble();
-                        //ea1 = ed1.getText().toString();
-                        break;
+            date1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewGroup1.settime();
+                }
+            });
+
+            date2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewGroup2.settime();
+                }
+            });
+
+            date3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewGroup3.settime();
+                }
+            });
+
+            date4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewGroup4.settime();
+                }
+            });
+
+
+            /// setOncheck ///
+
+            rg1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup group, int checkedId) {
+                    switch (checkedId)
+                    {
+                        case R.id.customrb1 :
+                            vg1 = viewGroup1.setvaluerb(R.id.customrb1);
+                            //Toast.makeText(getContext(),"checkedId",Toast.LENGTH_SHORT).show();
+                            viewGroup1.setinvisble();
+                            break;
+                        case R.id.customrb2 :
+                            vg1 = viewGroup1.setvaluerb(R.id.customrb2);
+                            //Toast.makeText(getContext(),"GG",Toast.LENGTH_SHORT).show();
+                            viewGroup1.setvisble();
+                            //ea1 = ed1.getText().toString();
+                            break;
+                    }
+
+                    az.setText(i+vg1+vg2+vg3+vg4+"/4");
+
                 }
 
-                az.setText(i+vg1+vg2+vg3+vg4+"/4");
 
-            }
-
-
-        });
+            });
 
 
-        rg2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
+            rg2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup group, int checkedId) {
 
-                switch (checkedId)
-                {
-                    case R.id.customrb1 :
-                        vg2 = viewGroup2.setvaluerb(R.id.customrb1);
-                        //Toast.makeText(getContext(),"HELLO",Toast.LENGTH_SHORT).show();
-                        viewGroup2.setinvisble();
-                       // az.setText("2/30");
-                        break;
+                    switch (checkedId)
+                    {
+                        case R.id.customrb1 :
+                            vg2 = viewGroup2.setvaluerb(R.id.customrb1);
+                            //Toast.makeText(getContext(),"HELLO",Toast.LENGTH_SHORT).show();
+                            viewGroup2.setinvisble();
+                            // az.setText("2/30");
+                            break;
 
-                    case R.id.customrb2 :
-                        vg2 = viewGroup2.setvaluerb(R.id.customrb2);
-                        //Toast.makeText(getContext(),"GG",Toast.LENGTH_SHORT).show();
-                        viewGroup2.setvisble();
-                        //ea2 = ed2.getText().toString();
-                        //az.setText("2/30");
-                        break;
+                        case R.id.customrb2 :
+                            vg2 = viewGroup2.setvaluerb(R.id.customrb2);
+                            //Toast.makeText(getContext(),"GG",Toast.LENGTH_SHORT).show();
+                            viewGroup2.setvisble();
+                            //ea2 = ed2.getText().toString();
+                            //az.setText("2/30");
+                            break;
+                    }
+                    az.setText(i+vg1+vg2+vg3+vg4+"/4");
                 }
-                az.setText(i+vg1+vg2+vg3+vg4+"/4");
-            }
-        });
+            });
 
-        rg3.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId)
-                {
-                    case R.id.customrb1 :
-                        vg3 = viewGroup3.setvaluerb(R.id.customrb1);
-                        //Toast.makeText(getContext(),"checkedId",Toast.LENGTH_SHORT).show();
-                        viewGroup3.setinvisble();
-                        break;
-                    case R.id.customrb2 :
-                        vg3 = viewGroup3.setvaluerb(R.id.customrb2);
-                        //Toast.makeText(getContext(),"GG",Toast.LENGTH_SHORT).show();
-                        viewGroup3.setvisble();
-                        //ea3 = ed3.getText().toString();
-                        break;
+            rg3.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup group, int checkedId) {
+                    switch (checkedId)
+                    {
+                        case R.id.customrb1 :
+                            vg3 = viewGroup3.setvaluerb(R.id.customrb1);
+                            //Toast.makeText(getContext(),"checkedId",Toast.LENGTH_SHORT).show();
+                            viewGroup3.setinvisble();
+                            break;
+                        case R.id.customrb2 :
+                            vg3 = viewGroup3.setvaluerb(R.id.customrb2);
+                            //Toast.makeText(getContext(),"GG",Toast.LENGTH_SHORT).show();
+                            viewGroup3.setvisble();
+                            //ea3 = ed3.getText().toString();
+                            break;
+                    }
+                    az.setText(i+vg1+vg2+vg3+vg4+"/4");
                 }
-                az.setText(i+vg1+vg2+vg3+vg4+"/4");
-            }
-        });
+            });
 
-        rg4.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
+            rg4.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup group, int checkedId) {
 
-                switch (checkedId)
-                {
-                    case R.id.customrb1 :
-                        vg4 = viewGroup4.setvaluerb(R.id.customrb1);
-                        //Toast.makeText(getContext(),"HELLO",Toast.LENGTH_SHORT).show();
-                        viewGroup4.setinvisble();
+                    switch (checkedId)
+                    {
+                        case R.id.customrb1 :
+                            vg4 = viewGroup4.setvaluerb(R.id.customrb1);
+                            //Toast.makeText(getContext(),"HELLO",Toast.LENGTH_SHORT).show();
+                            viewGroup4.setinvisble();
 
-                        break;
+                            break;
 
-                    case R.id.customrb2 :
-                        vg4 = viewGroup4.setvaluerb(R.id.customrb2);
-                        //Toast.makeText(getContext(),"GG",Toast.LENGTH_SHORT).show();
-                        viewGroup4.setvisble();
-                        //ea4 = ed4.getText().toString();
-                        break;
+                        case R.id.customrb2 :
+                            vg4 = viewGroup4.setvaluerb(R.id.customrb2);
+                            //Toast.makeText(getContext(),"GG",Toast.LENGTH_SHORT).show();
+                            viewGroup4.setvisble();
+                            //ea4 = ed4.getText().toString();
+                            break;
+                    }
+                    az.setText(i+vg1+vg2+vg3+vg4+"/4");
                 }
-                az.setText(i+vg1+vg2+vg3+vg4+"/4");
+            });
+
+
+
+
+
+
+
+
+
+
+
+            /////////////////////////////////////////////////////////////////////////////////////////////
+
+            final TextView ax = (TextView) v.findViewById(R.id.txttest1);
+            final String a = bundle.getString("Key");
+            final String area = bundle.getString("area");
+            final String abbname = bundle.getString("wh");
+
+
+
+            ax.setText(a);
+
+
+            /// Link DB //
+
+            try {
+                connectionSQL = new ConnectionSQL();
+                Connection con = connectionSQL.CONN();
+                stmt = con.createStatement();
+                String query =
+                        "select *from Tmp_whcode where whcode = '"+abbname+"'";
+
+                rs = stmt.executeQuery(query);
+
+                while(rs.next()) {
+                    whcode = rs.getString("ABBNAME");
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        });
 
 
+            FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String text[] = new String[4];
 
+                    text[0] = ed1.getText().toString();
+                    text[1] = ed2.getText().toString();
+                    text[2] = ed3.getText().toString();
+                    text[3] = ed4.getText().toString();
 
+                    Integer point[] = new Integer[4];
+                    point[0] = vg1;
+                    point[1] = vg2;
+                    point[2] = vg3;
+                    point[3] = vg4;
 
-
-
-
-
-
-
-        /////////////////////////////////////////////////////////////////////////////////////////////
-
-        final TextView ax = (TextView) v.findViewById(R.id.txttest1);
-        final String a = bundle.getString("Key");
-        final String area = bundle.getString("area");
-        final String abbname = bundle.getString("wh");
-        final Integer chk = bundle.getInt("chk");
-
-
-        ax.setText(a);
-
-
-        /// Link DB //
-
-        try {
-            connectionSQL = new ConnectionSQL();
-            Connection con = connectionSQL.CONN();
-            stmt = con.createStatement();
-            String query =
-                    "select *from Tmp_whcode where whcode = '"+abbname+"'";
-
-            rs = stmt.executeQuery(query);
-
-            while(rs.next()) {
-                whcode = rs.getString("ABBNAME");
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-
-        FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String text[] = new String[4];
-
-                text[0] = ed1.getText().toString();
-                text[1] = ed2.getText().toString();
-                text[2] = ed3.getText().toString();
-                text[3] = ed4.getText().toString();
-
-
-                Integer point[] = new Integer[4];
-                point[0] = vg1;
-                point[1] = vg2;
-                point[2] = vg3;
-                point[3] = vg4;
-
-
-                String dd[] = new String[4];
-                dd[0] = date1.getText().toString();
-                dd[1] = date2.getText().toString();
-                dd[2] = date3.getText().toString();
-                dd[3] = date4.getText().toString();
-
-
-
-
-                if (chk == 1)
-                {
+                    String dd[] = new String[4];
+                    dd[0] = date1.getText().toString();
+                    dd[1] = date2.getText().toString();
+                    dd[2] = date3.getText().toString();
+                    dd[3] = date4.getText().toString();
                     try {
                         connectionSQL = new ConnectionSQL();
                         Connection con = connectionSQL.CONN();
@@ -350,17 +344,151 @@ public class MainFragment extends Fragment{
                     } catch (Exception ex) {
                         Toast.makeText(getActivity(),ex.toString(),Toast.LENGTH_SHORT).show();
                     }
-                } else if(chk == 0){
-
-                    Toast.makeText(getActivity(),"กูมาจากหน้าอื่น",Toast.LENGTH_LONG).show();
 
                 }
+            });
+
+        }
+        else if (chk == 0){
+
+
+            ArrayList<String> list1 = null;
+            final TextView ax = (TextView) v.findViewById(R.id.txttest1);
+            final String a = bundle.getString("Key");
+            final String area = bundle.getString("area");
+            final String abbname = bundle.getString("wh");
+            int vb1 = 0,vb2 = 0,vb3 = 0,vb4 = 0;
 
 
 
+            ax.setText(a);
+            String olddata;
+            final String[] test;
+            /// Link DB //
 
+            try {
+                connectionSQL = new ConnectionSQL();
+                Connection con = connectionSQL.CONN();
+                stmt = con.createStatement();
+                String query = "select * from mas_pj where DOC_NUMBER = '"+a+"'";
+
+                list1 = new ArrayList<>();
+
+                rs = stmt.executeQuery(query);
+
+                while(rs.next()) {
+                    olddata = rs.getString("POINT");
+                    list1.add(olddata);
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        });
+
+
+
+            /// set ViewGroup ///
+
+
+            viewGroup1 = (CustomViewGroup) v.findViewById(R.id.viewgroup1);
+            viewGroup2 = (CustomViewGroup) v.findViewById(R.id.viewgroup2);
+            viewGroup3 = (CustomViewGroup) v.findViewById(R.id.viewgroup3);
+            viewGroup4 = (CustomViewGroup) v.findViewById(R.id.viewgroup4);
+
+
+            /// set text ///
+
+            head[0] = viewGroup1.settxt("1.หัวข้อ");
+            head[1] = viewGroup2.settxt("2.หัวข้อ");
+            head[2] = viewGroup3.settxt("3.หัวข้อ");
+            head[3] = viewGroup4.settxt("4.หัวข้อ");
+
+            /// set radiobutton ///
+
+            rg1 = (RadioGroup) viewGroup1.findViewById(R.id.customradiogroup);
+            rg2 = (RadioGroup) viewGroup2.findViewById(R.id.customradiogroup);
+            rg3 = (RadioGroup) viewGroup3.findViewById(R.id.customradiogroup);
+            rg4 = (RadioGroup) viewGroup4.findViewById(R.id.customradiogroup);
+
+
+            /// set edittext ///
+
+
+            ed1 = (EditText) viewGroup1.findViewById(R.id.customedt);
+            ed2 = (EditText) viewGroup2.findViewById(R.id.customedt);
+            ed3 = (EditText) viewGroup3.findViewById(R.id.customedt);
+            ed4 = (EditText) viewGroup4.findViewById(R.id.customedt);
+
+
+            //set textview date///
+
+            date1 = (TextView) viewGroup1.findViewById(R.id.setdate);
+            date2 = (TextView) viewGroup2.findViewById(R.id.setdate);
+            date3 = (TextView) viewGroup3.findViewById(R.id.setdate);
+            date4 = (TextView) viewGroup4.findViewById(R.id.setdate);
+
+            /// set Onclick txt ///
+
+            date1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewGroup1.settime();
+                }
+            });
+
+            date2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewGroup2.settime();
+                }
+            });
+
+            date3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewGroup3.settime();
+                }
+            });
+
+            date4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewGroup4.settime();
+                }
+            });
+
+
+
+            test = list1.toArray(new String[list1.size()]);
+
+
+            //set radiobutton
+
+            viewGroup1.setcheckrb(test[0]);
+            viewGroup2.setcheckrb(test[1]);
+            viewGroup3.setcheckrb(test[2]);
+            viewGroup4.setcheckrb(test[3]);
+
+
+            // set valuerb
+
+
+
+
+
+
+
+
+
+
+            FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getActivity(),"ss",Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
 
 
         return  v;

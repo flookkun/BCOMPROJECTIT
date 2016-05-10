@@ -107,6 +107,21 @@ public class CustomViewGroup extends FrameLayout {
         return value;
     }
 
+    public void setcheckrb(String a){
+
+
+        if (a == "1"){
+            rb1.setChecked(true);
+            //setvaluerb(value);
+        }
+        else{
+            rb2.setChecked(true);
+            setvisble();
+            //setvaluerb(value);
+        }
+
+    }
+
     public void settime (){
 
         final Calendar c = Calendar.getInstance();
