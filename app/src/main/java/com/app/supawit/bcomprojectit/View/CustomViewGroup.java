@@ -107,18 +107,22 @@ public class CustomViewGroup extends FrameLayout {
         return value;
     }
 
-    public void setcheckrb(String a){
+    public int setcheckrb(String a){
 
 
         if (a == "1"){
             rb1.setChecked(true);
+            value = 1;
             //setvaluerb(value);
         }
         else{
             rb2.setChecked(true);
+            value = 0;
             setvisble();
             //setvaluerb(value);
         }
+
+        return value;
 
     }
 

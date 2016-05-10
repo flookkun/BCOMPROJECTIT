@@ -40,6 +40,7 @@ public class MainFragment extends Fragment{
     TextView az,date1,date2,date3,date4;
     int i = 0;
     int vg1 = 0,vg2 = 0,vg3 = 0,vg4 = 0;
+    int vb1 = 0,vb2 = 0,vb3 = 0,vb4 = 0;
     EditText ed1,ed2,ed3,ed4;
     ConnectionSQL connectionSQL;
     Statement stmt = null;
@@ -58,7 +59,6 @@ public class MainFragment extends Fragment{
         final Bundle bundle  = this.getArguments();
         final String head[] = new String[4];
         final Integer chk = bundle.getInt("chk");
-
         final View v = inflater.inflate(R.layout.fragment_main,null);
 
        /* mCrimeRecyclerView = (RecyclerView) v.findViewById(R.id.crime_recycler_view);
@@ -77,6 +77,7 @@ public class MainFragment extends Fragment{
 
         az.setText(i+"/4");
         if(chk==1){
+
             /// set ViewGroup ///
 
 
@@ -353,11 +354,12 @@ public class MainFragment extends Fragment{
 
 
             ArrayList<String> list1 = null;
+            az = (TextView) v.findViewById(R.id.txtscore);
             final TextView ax = (TextView) v.findViewById(R.id.txttest1);
             final String a = bundle.getString("Key");
             final String area = bundle.getString("area");
             final String abbname = bundle.getString("wh");
-            int vb1 = 0,vb2 = 0,vb3 = 0,vb4 = 0;
+
 
 
 
@@ -462,15 +464,113 @@ public class MainFragment extends Fragment{
             test = list1.toArray(new String[list1.size()]);
 
 
-            //set radiobutton
+            //set olddata
 
-            viewGroup1.setcheckrb(test[0]);
-            viewGroup2.setcheckrb(test[1]);
-            viewGroup3.setcheckrb(test[2]);
-            viewGroup4.setcheckrb(test[3]);
+            vb1 = viewGroup1.setcheckrb(test[0]);
+            vb2 = viewGroup2.setcheckrb(test[1]);
+            vb3 = viewGroup3.setcheckrb(test[2]);
+            vb4 = viewGroup4.setcheckrb(test[3]);
+            az.setText(i+vb1+vb2+vb3+vb4+"/4");
 
 
-            // set valuerb
+            /// setOncheck ///
+
+            rg1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup group, int checkedId) {
+                    switch (checkedId)
+                    {
+                        case R.id.customrb1 :
+                            vb1 = viewGroup1.setvaluerb(R.id.customrb1);
+                            //Toast.makeText(getContext(),"checkedId",Toast.LENGTH_SHORT).show();
+                            viewGroup1.setinvisble();
+                            break;
+                        case R.id.customrb2 :
+                            vb1 = viewGroup1.setvaluerb(R.id.customrb2);
+                            //Toast.makeText(getContext(),"GG",Toast.LENGTH_SHORT).show();
+                            viewGroup1.setvisble();
+                            //ea1 = ed1.getText().toString();
+                            break;
+                    }
+
+                    az.setText(i+vb1+vb2+vb3+vb4+"/4");
+
+                }
+
+
+            });
+
+
+            rg2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                    switch (checkedId)
+                    {
+                        case R.id.customrb1 :
+                            vb2 = viewGroup2.setvaluerb(R.id.customrb1);
+                            //Toast.makeText(getContext(),"HELLO",Toast.LENGTH_SHORT).show();
+                            viewGroup2.setinvisble();
+                            // az.setText("2/30");
+                            break;
+
+                        case R.id.customrb2 :
+                            vb2 = viewGroup2.setvaluerb(R.id.customrb2);
+                            //Toast.makeText(getContext(),"GG",Toast.LENGTH_SHORT).show();
+                            viewGroup2.setvisble();
+                            //ea2 = ed2.getText().toString();
+                            //az.setText("2/30");
+                            break;
+                    }
+                    az.setText(i+vb1+vb2+vb3+vb4+"/4");
+                }
+            });
+
+            rg3.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup group, int checkedId) {
+                    switch (checkedId)
+                    {
+                        case R.id.customrb1 :
+                            vb3 = viewGroup3.setvaluerb(R.id.customrb1);
+                            //Toast.makeText(getContext(),"checkedId",Toast.LENGTH_SHORT).show();
+                            viewGroup3.setinvisble();
+                            break;
+                        case R.id.customrb2 :
+                            vb3 = viewGroup3.setvaluerb(R.id.customrb2);
+                            //Toast.makeText(getContext(),"GG",Toast.LENGTH_SHORT).show();
+                            viewGroup3.setvisble();
+                            //ea3 = ed3.getText().toString();
+                            break;
+                    }
+                    az.setText(i+vb1+vb2+vb3+vb4+"/4");
+                }
+            });
+
+            rg4.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                    switch (checkedId)
+                    {
+                        case R.id.customrb1 :
+                            vb4 = viewGroup4.setvaluerb(R.id.customrb1);
+                            //Toast.makeText(getContext(),"HELLO",Toast.LENGTH_SHORT).show();
+                            viewGroup4.setinvisble();
+
+                            break;
+
+                        case R.id.customrb2 :
+                            vb4 = viewGroup4.setvaluerb(R.id.customrb2);
+                            //Toast.makeText(getContext(),"GG",Toast.LENGTH_SHORT).show();
+                            viewGroup4.setvisble();
+                            //ea4 = ed4.getText().toString();
+                            break;
+                    }
+                    az.setText(i+vb1+vb2+vb3+vb4+"/4");
+                }
+            });
+
 
 
 
@@ -485,7 +585,7 @@ public class MainFragment extends Fragment{
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getActivity(),"ss",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"555",Toast.LENGTH_SHORT).show();
                 }
             });
         }
